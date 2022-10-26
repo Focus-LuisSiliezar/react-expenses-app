@@ -11,6 +11,10 @@ function ManageExpenses({ route, navigation }) {
     const expensesContext = useContext(ExpensesContext);
     const editedExpenseId = route.params?.id;
     const isEditing = !!editedExpenseId;
+    const selectedExpense = expensesContext.expenses.find(expense => expense.id === editedExpenseId);
+
+
+
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -42,6 +46,7 @@ function ManageExpenses({ route, navigation }) {
                 onCancel={cancelExpenseHandler}
                 onConfirm={confirmExpenseHandler}
                 confirmLabel={isEditing ? 'Update' : 'Add'}
+                defaultValues={selectedExpense}
             />
             {isEditing && (
                 <View style={style.deleteContainer}>

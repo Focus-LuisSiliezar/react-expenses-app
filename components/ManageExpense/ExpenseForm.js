@@ -39,13 +39,9 @@ function ExpenseForms({ onCancel, onConfirm, confirmLabel, defaultValues }) {
             date: new Date(inputs.date.value),
             description: inputs.description.value,
         };
-        console.log(expenseData.date);
         const amoutIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
         // const dateIsValid = expenseData.date.toString() === 'Invalid Date';
         const descriptionIsValid = expenseData.description.trim().length > 0;
-        console.log(amoutIsValid);
-        // console.log(dateIsValid);
-        console.log(descriptionIsValid);
         if (!amoutIsValid || !descriptionIsValid) {
             Alert.alert('Invalid Input', 'Please check the data entered');
             setInputs((currentInputs) => {
